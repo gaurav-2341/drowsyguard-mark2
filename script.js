@@ -676,3 +676,32 @@ function updateSoundSetting() {
 
 // Start session stats timer
 setInterval(updateSessionStats, 1000);
+
+
+// === Reset Session Functionality ===
+document.getElementById('resetSessionBtn').addEventListener('click', () => {
+    drowsyScores = [];
+    maxDrowsyLevel = 0;
+    lastAlertTimestamp = null;
+    if (typeof chart !== 'undefined') {
+        chart.data.labels = [];
+        chart.data.datasets.forEach(ds => ds.data = []);
+        chart.update();
+    }
+    document.getElementById('avgDrowsyLevel').textContent = '-';
+    document.getElementById('maxDrowsyLevel').textContent = '-';
+    document.getElementById('lastAlertTime').textContent = '-';
+});
+
+
+// === Alert Log Append Function ===
+function addAlertLog(message) {
+    const list = document.getElementById('alertList');
+    if (list) {
+        const item = document.createElement('li');
+        const now = new Date();
+        item.textContent = `[${now.toLocaleTimeString()}] ${message}`;
+        list.appendChild(item);
+        list.scrollTop = list.scrollHeight; // auto-scroll to newest
+    }
+}
