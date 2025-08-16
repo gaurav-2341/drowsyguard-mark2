@@ -1,3 +1,6 @@
+
+// Wrap monitor-specific logic to avoid errors on index.html
+if (document.body.classList.contains("monitor-page")) {
 // Global variables
 let model;
 let webcam;
@@ -720,3 +723,5 @@ stopCamera = function() {
     document.getElementById('maxDrowsyLevel').textContent = '-';
     document.getElementById('lastAlertTime').textContent = '-';
 };
+
+}
