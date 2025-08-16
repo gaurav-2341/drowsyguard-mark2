@@ -676,3 +676,47 @@ function updateSoundSetting() {
 
 // Start session stats timer
 setInterval(updateSessionStats, 1000);
+
+// Additional stats variables
+let drowsyScores = [];
+let maxDrowsyLevel = 0;
+let lastAlertTimestamp = null;
+
+// Override updatePredictionDisplay to also track stats
+const originalUpdatePredictionDisplay = updatePredictionDisplay;
+updatePredictionDisplay = function(awakeConfidence, drowsyConfidence) {
+    originalUpdatePredictionDisplay(awakeConfidence, drowsyConfidence);
+    const drowsyPercent = Math.round(drowsyConfidence * 100);
+    drowsyScores.push(drowsyPercent);
+    if (drowsyScores.length > 100) drowsyScores.shift();
+    if (drowsyPercent > maxDrowsyLevel) {
+        maxDrowsyLevel = drowsyPercent;
+        document.getElementById('maxDrowsyLevel').textContent = maxDrowsyLevel + '%';
+        document.getElementById('maxDrowsyLevel').parentElement.parentElement.classList.add('updated');
+        setTimeout(()=>document.getElementById('maxDrowsyLevel').parentElement.parentElement.classList.remove('updated'),600);
+    }
+    const avg = Math.round(drowsyScores.reduce((a,b)=>a+b,0) / drowsyScores.length);
+    document.getElementById('avgDrowsyLevel').textContent = avg + '%';
+};
+
+// Override triggerDrowsinessAlert to log last alert time
+const originalTriggerDrowsinessAlert = triggerDrowsinessAlert;
+triggerDrowsinessAlert = function() {
+    originalTriggerDrowsinessAlert();
+    lastAlertTimestamp = new Date();
+    document.getElementById('lastAlertTime').textContent = lastAlertTimestamp.toLocaleTimeString();
+    document.getElementById('lastAlertTime').parentElement.parentElement.classList.add('updated');
+    setTimeout(()=>document.getElementById('lastAlertTime').parentElement.parentElement.classList.remove('updated'),600);
+};
+
+// Reset stats when camera stops
+const originalStopCamera = stopCamera;
+stopCamera = function() {
+    originalStopCamera();
+    drowsyScores = [];
+    maxDrowsyLevel = 0;
+    lastAlertTimestamp = null;
+    document.getElementById('avgDrowsyLevel').textContent = '-';
+    document.getElementById('maxDrowsyLevel').textContent = '-';
+    document.getElementById('lastAlertTime').textContent = '-';
+};

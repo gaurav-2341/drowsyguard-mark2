@@ -1618,3 +1618,36 @@ body {
   from { transform: translateY(0) scale(1); opacity: 1; }
   to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
+
+/* Improved Monitor Page Controls */
+.camera-controls.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 15px;
+}
+.camera-controls.toolbar .control-btn {
+    flex: 1 1 150px;
+    max-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.camera-controls.toolbar .control-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+.stat-item.updated {
+    animation: highlightUpdate 0.6s ease;
+}
+@keyframes highlightUpdate {
+    0% { background-color: rgba(72,202,228,0.3); }
+    100% { background-color: transparent; }
+}
