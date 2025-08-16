@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
-<body>
+<body class="monitor-page">
     <div class="bubbles"></div>
     <div class="monitor-container">
         <header class="monitor-header">
@@ -95,16 +95,9 @@
             </div>
 
             <div class="analysis-section">
-                <div class="predictions-section">
-                    <div class="section-header">
-                        <h2>AI Detection Analysis</h2>
-                        <div class="analysis-status" id="analysisStatus">
-                            <i class="fas fa-brain"></i>
-                            <span>Ready</span>
-                        </div>
-                    </div>
-                    
-                    <div class="prediction-item">
+<div class="analysis-card detection-settings">
+    <div class="predictions-section">
+        <div class="prediction-item">
                         <div class="prediction-label">
                             <i class="fas fa-eye"></i>
                             <span>Awake State</span>
@@ -133,64 +126,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="stats-section">
-                    <h3>Session Statistics</h3>
-                    <div class="stats-grid">
-<div class="stat-item">
-    <i class="fas fa-bed"></i>
-    <div class="stat-content">
-        <div class="stat-value" id="avgDrowsyLevel">-</div>
-        <div class="stat-label">Avg Drowsy Level</div>
     </div>
-</div>
-<div class="stat-item">
-    <i class="fas fa-arrow-up"></i>
-    <div class="stat-content">
-        <div class="stat-value" id="maxDrowsyLevel">-</div>
-        <div class="stat-label">Max Drowsy Level</div>
-    </div>
-</div>
-<div class="stat-item">
-    <i class="fas fa-history"></i>
-    <div class="stat-content">
-        <div class="stat-value" id="lastAlertTime">-</div>
-        <div class="stat-label">Last Alert Time</div>
-    </div>
-</div>
-
-                        <div class="stat-item">
-                            <i class="fas fa-clock"></i>
-                            <div class="stat-content">
-                                <div class="stat-value" id="monitoringTime">00:00:00</div>
-                                <div class="stat-label">Monitoring Time</div>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <div class="stat-content">
-                                <div class="stat-value" id="alertCount">0</div>
-                                <div class="stat-label">Alerts Triggered</div>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-eye"></i>
-                            <div class="stat-content">
-                                <div class="stat-value" id="avgAwakeLevel">-</div>
-                                <div class="stat-label">Avg Awake Level</div>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <div class="stat-content">
-                                <div class="stat-value" id="safetyScore">100%</div>
-                                <div class="stat-label">Safety Score</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="settings-section">
+    <div class="settings-section">
                     <h3>Alert Settings</h3>
                     <div class="settings-grid">
                         <div class="setting-item">
@@ -209,11 +146,16 @@
                                 <label for="vibrationToggle">Vibration Alerts</label>
                             </div>
                         </div>
-                        <div class="setting-item">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" id="soundToggle" checked>
-                                <label for="soundToggle">Sound Alerts</label>
-                            </div>
+</div>
+<div class="stats-section">
+                    <h3>Session Statistics</h3>
+                    <div class="stats-grid">
+<div class="stat-item">
+    <i class="fas fa-bed"></i>
+    <div class="stat-content">
+        <div class="stat-value" id="avgDrowsyLevel">-</div>
+        <div class="stat-label">Avg Drowsy Level</div>
+    </div></div>
                         </div>
                     </div>
                 </div>
