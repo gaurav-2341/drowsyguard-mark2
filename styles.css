@@ -1618,3 +1618,93 @@ body {
   from { transform: translateY(0) scale(1); opacity: 1; }
   to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
+
+/* Improved Monitor Page Controls */
+.camera-controls.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 15px;
+}
+.camera-controls.toolbar .control-btn {
+    flex: 1 1 150px;
+    max-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.camera-controls.toolbar .control-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+.stat-item.updated {
+    animation: highlightUpdate 0.6s ease;
+}
+@keyframes highlightUpdate {
+    0% { background-color: rgba(72,202,228,0.3); }
+    100% { background-color: transparent; }
+}
+
+/* === Ocean Theme Background === */
+body {
+    background: linear-gradient(to bottom, #001f33, #00334d, #004466);
+    color: #f0f8ff;
+    font-family: 'Inter', sans-serif;
+}
+
+/* === Bubble Animation Layer === */
+.bubbles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.bubbles span {
+    position: absolute;
+    display: block;
+    bottom: -150px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: rise 20s infinite ease-in;
+}
+@keyframes rise {
+    0%   { transform: translateY(0) scale(1); opacity: 0.4; }
+    50%  { opacity: 0.8; }
+    100% { transform: translateY(-1200px) scale(0.8); opacity: 0; }
+}
+
+/* === Glassmorphism Panels === */
+.card, .monitor-container, .stats-grid, .camera-controls {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+/* === Prediction Bar Colors === */
+.prediction-fill.awake-fill {
+    background: linear-gradient(90deg, #3acfd5, #3a4ed5);
+}
+.prediction-fill.drowsy-fill {
+    background: linear-gradient(90deg, #ff9966, #ff5e62);
+}
+
+/* Adjust text contrast */
+.muted, .stat-label, .info-label {
+    color: rgba(240, 248, 255, 0.85);
+}
+
+/* Font for headings */
+h1, h2, h3, .brand {
+    font-family: 'Poppins', sans-serif;
+}
