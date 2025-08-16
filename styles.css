@@ -1618,3 +1618,27 @@ body {
   from { transform: translateY(0) scale(1); opacity: 1; }
   to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
+
+/* Bigger Stats Area */
+.stats-grid {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+/* Reset Button Styling */
+#resetSessionBtn {
+    background: linear-gradient(90deg, #ff9966, #ff5e62);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#resetSessionBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
